@@ -7,36 +7,33 @@
 * Related Document: See README.md
 *
 *******************************************************************************
-* Copyright 2024-2025, Cypress Semiconductor Corporation (an Infineon company) or
-* an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
-*
-* This software, including source code, documentation and related
-* materials ("Software") is owned by Cypress Semiconductor Corporation
-* or one of its affiliates ("Cypress") and is protected by and subject to
-* worldwide patent protection (United States and foreign),
-* United States copyright laws and international treaty provisions.
-* Therefore, you may use this Software only as provided in the license
-* agreement accompanying the software package from which you
-* obtained this Software ("EULA").
-* If no EULA applies, Cypress hereby grants you a personal, non-exclusive,
-* non-transferable license to copy, modify, and compile the Software
-* source code solely for use in connection with Cypress's
-* integrated circuit products.  Any reproduction, modification, translation,
-* compilation, or representation of this Software except as specified
-* above is prohibited without the express written permission of Cypress.
-*
-* Disclaimer: THIS SOFTWARE IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND,
-* EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, NONINFRINGEMENT, IMPLIED
-* WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. Cypress
-* reserves the right to make changes to the Software without notice. Cypress
-* does not assume any liability arising out of the application or use of the
-* Software or any product or circuit described in the Software. Cypress does
-* not authorize its products for use in any products where a malfunction or
-* failure of the Cypress product may reasonably be expected to result in
-* significant property damage, injury or death ("High Risk Product"). By
-* including Cypress's product in a High Risk Product, the manufacturer
-* of such system or application assumes all risk of such use and in doing
-* so agrees to indemnify Cypress against all liability.
+ * (c) 2024-2026, Infineon Technologies AG, or an affiliate of Infineon
+ * Technologies AG. All rights reserved.
+ * This software, associated documentation and materials ("Software") is
+ * owned by Infineon Technologies AG or one of its affiliates ("Infineon")
+ * and is protected by and subject to worldwide patent protection, worldwide
+ * copyright laws, and international treaty provisions. Therefore, you may use
+ * this Software only as provided in the license agreement accompanying the
+ * software package from which you obtained this Software. If no license
+ * agreement applies, then any use, reproduction, modification, translation, or
+ * compilation of this Software is prohibited without the express written
+ * permission of Infineon.
+ *
+ * Disclaimer: UNLESS OTHERWISE EXPRESSLY AGREED WITH INFINEON, THIS SOFTWARE
+ * IS PROVIDED AS-IS, WITH NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING, BUT NOT LIMITED TO, ALL WARRANTIES OF NON-INFRINGEMENT OF
+ * THIRD-PARTY RIGHTS AND IMPLIED WARRANTIES SUCH AS WARRANTIES OF FITNESS FOR A
+ * SPECIFIC USE/PURPOSE OR MERCHANTABILITY.
+ * Infineon reserves the right to make changes to the Software without notice.
+ * You are responsible for properly designing, programming, and testing the
+ * functionality and safety of your intended application of the Software, as
+ * well as complying with any legal requirements related to its use. Infineon
+ * does not guarantee that the Software will be free from intrusion, data theft
+ * or loss, or other breaches ("Security Breaches"), and Infineon shall have
+ * no liability arising out of any Security Breaches. Unless otherwise
+ * explicitly approved by Infineon, the Software may not be used in any
+ * application where a failure of the Product or any consequences of the use
+ * thereof can reasonably be expected to result in personal injury.
 *******************************************************************************/
 
 #include "cy_pdl.h"
@@ -48,6 +45,13 @@
 /*******************************************************************************
 * Macros
 ********************************************************************************/
+#if defined (CY_DEVICE_TVIIC2D6M) || defined (CY_DEVICE_TVIIC2D4M)
+#define TCPWM_TR_BASE           TCPWM_TR_ONE_CNT_NR
+#define TCPWM_TR_LINE           TRIG_OUT_MUX_4_TCPWM0_ALL_CNT_TR_IN0
+#else
+#define TCPWM_TR_BASE           TCPWM1_TR_ONE_CNT_NR
+#define TCPWM_TR_LINE           TRIG_OUT_MUX_5_TCPWM1_ALL_CNT_TR_IN0
+#endif
 
 /*******************************************************************************
 * Function Prototypes
@@ -140,9 +144,9 @@ int main(void)
 
     /* TCPWM configuration to use group trigger #0 as its starting trigger */
     PWM_LEDA_config.startInputMode = CY_TCPWM_INPUT_RISINGEDGE;
-    PWM_LEDA_config.startInput = 2 + TCPWM_TR_ONE_CNT_NR;
+    PWM_LEDA_config.startInput = 2 + TCPWM_TR_BASE;
     PWM_LEDB_config.startInputMode = CY_TCPWM_INPUT_RISINGEDGE;
-    PWM_LEDB_config.startInput = 2 + TCPWM_TR_ONE_CNT_NR;
+    PWM_LEDB_config.startInput = 2 + TCPWM_TR_BASE;
 
     /* Initialize the TCPWM block */
     Cy_TCPWM_PWM_Init(PWM_LEDA_HW, PWM_LEDA_NUM, &PWM_LEDA_config);
@@ -153,7 +157,7 @@ int main(void)
     Cy_TCPWM_PWM_Enable(PWM_LEDB_HW, PWM_LEDB_NUM);
 
     /* Start the TCPWM block simultaneously */
-    Cy_TrigMux_SwTrigger(TRIG_OUT_MUX_4_TCPWM0_ALL_CNT_TR_IN0, CY_TRIGGER_TWO_CYCLES);
+    Cy_TrigMux_SwTrigger(TCPWM_TR_LINE, CY_TRIGGER_TWO_CYCLES);
 
     printf("PWM started successfully...\r\n");
     /* Put the CPU into sleep mode to save power */
