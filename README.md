@@ -6,7 +6,7 @@ This code example demonstrates how to trigger multiple TCPWM channels simultaneo
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-ce240925-tcpwm-simultaneous-startup)
 
-[Provide feedback on this code example.](https://yourvoice.infineon.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDA5MjUiLCJTcGVjIE51bWJlciI6IjAwMi00MDkyNSIsIkRvYyBUaXRsZSI6IlBETDogVENQV00gc2ltdWx0YW5lb3VzIHN0YXJ0dXAgYnkgc29mdHdhcmUgdHJpZ2dlciIsInJpZCI6ImdvLnNoaW1hZGFAaW5maW5lb24uY29tIiwiRG9jIHZlcnNpb24iOiIyLjMuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJBVVRPIiwiRG9jIEZhbWlseSI6IkFVVE8gTUNVIn0=)
+[Provide feedback on this code example.](https://yourvoice.infineon.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyNDA5MjUiLCJTcGVjIE51bWJlciI6IjAwMi00MDkyNSIsIkRvYyBUaXRsZSI6IlBETDogVENQV00gc2ltdWx0YW5lb3VzIHN0YXJ0dXAgYnkgc29mdHdhcmUgdHJpZ2dlciIsInJpZCI6ImdvLnNoaW1hZGFAaW5maW5lb24uY29tIiwiRG9jIHZlcnNpb24iOiIyLjQuMCIsIkRvYyBMYW5ndWFnZSI6IkVuZ2xpc2giLCJEb2MgRGl2aXNpb24iOiJNQ0QiLCJEb2MgQlUiOiJBVVRPIiwiRG9jIEZhbWlseSI6IkFVVE8gTUNVIn0=)
 
 
 
@@ -29,7 +29,7 @@ This code example demonstrates how to trigger multiple TCPWM channels simultaneo
 - [TRAVEO&trade; T2G Cluster 4M Lite Kit](https://www.infineon.com/evaluation-board/KIT-T2G-C-2D-4M-LITE) (`KIT_T2G_C-2D-4M_LITE`)<br>
 - [TRAVEO&trade; T2G Body high Lite Kit](https://www.infineon.com/evaluation-board/KIT-T2G-B-H-LITE) (`KIT_T2G-B-H_LITE`)
 - [TRAVEO&trade; T2G Body high Evaluation Kit](https://www.infineon.com/evaluation-board/KIT-T2G-B-H-EVK) (`KIT_T2G-B-H_EVK`)
-- [TRAVEO&trade; T2G Body high 16M Evaluation Kit](https://www.infineon.com/design-resources/finder-selection-tools/evaluation-board) (`KIT_T2G_B-H-16M_LITE`)
+- [TRAVEO&trade; T2G Body high 16M Evaluation Kit](https://www.infineon.com/evaluation-board/KIT-T2G-B-H-16M-LITE) (`KIT_T2G_B-H-16M_LITE`)
 
 
 ## Hardware setup
@@ -322,6 +322,7 @@ Document title: *CE240925* – *PDL: TCPWM Simultaneous Startup*
  2.1.0   | Added support for  KIT_T2G_C-2D-4M_LITE, KIT_T2G-B-H_EVK and KIT_T2G-B-H_LITE and updated to support ModusToolbox&trade; v3.6
  2.2.0   | Updated design.modus of the KIT_T2G_C-2D-4M_LITE for addressing CLK warning and updated to support ModusToolbox&trade; v3.7.     |
  2.3.0   | Added support for KIT_T2G_B-H-16M_LITE and updated to support ModusToolbox&trade; v3.8.   |
+ 2.4.0   | Updated the link for TRAVEO T2G Body High 16M Evaluation Kit   |
 <br>
 
 
